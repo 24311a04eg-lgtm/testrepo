@@ -1,0 +1,19 @@
+name: py app
+
+on: push
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: pip install -r requirements.txt
+
+      - run: pytest
+
+      - run: echo "tests passed"
+        if: success()
+
+      - run: echo "tests failed"
+        if: failure()
